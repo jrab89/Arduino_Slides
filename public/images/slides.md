@@ -329,7 +329,7 @@ analogWrite(pin, value); // 0 for off, 255 for fully on, and anywhere in between
 
 ---
 
-background-image: url()
+background-image: url(images/rgb_blinker_3.png)
 
 ---
 
@@ -346,7 +346,6 @@ int selectedColor = 9; // 9 for red, 10 for green, 11 for blue
 int potPin = 5;
 
 void setup(){
-  //Serial.begin(9600);
   pinMode(redPin, OUTPUT);
   pinMode(greenPin, OUTPUT);
   pinMode(bluePin, OUTPUT);
@@ -375,11 +374,19 @@ void loop(){
   
   int rawPotInput = analogRead(potPin);
   int output = map(rawPotInput, 0, 1023, 0, 255);
-  //Serial.println(output);
   analogWrite(selectedColor, output);
 }
 ```]
 
+### A value from 0 to 1023 is read from analogRead and analogWrite expects a value from 0 to 255
+
 ---
 
-# The Map Function
+# That Map Function?
+### Re-maps a number from one range to another
+.left[```c
+long map(long x, long in_min, long in_max, long out_min, long out_max)
+{
+  return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+}
+```]

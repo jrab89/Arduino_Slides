@@ -294,3 +294,92 @@ void loop(){
   digitalWrite(selectedColor, HIGH);
 }
 ```]
+
+---
+
+# All the Colors!
+![all_the_things](https://drupal.org/files/x-all-the-things-template.png)
+
+---
+
+# We Need Analog IO
+![digital_vs_analog](http://www.romancenstyle.com/wp-content/uploads/2012/11/digita.jpg)
+
+---
+# Analog Output
+.left[```c
+analogWrite(pin, value); // 0 for off, 255 for fully on, and anywhere in between
+
+```]
+### 16777216 colors :(
+
+![pwm](http://arduino.cc/en/uploads/Tutorial/pwm.gif)
+
+---
+
+# Analog Input
+
+![pot](http://arduino.cc/en/uploads/Tutorial/potentiometer.jpg)
+
+---
+
+# Potentiometers Have Variable Resistence
+
+![voltage_divider](http://web.mit.edu/rec/www/workshop/voltage-divider.gif)
+
+---
+
+background-image: url()
+
+---
+
+.left[```c
+int redPin = 9;
+int greenPin = 10;
+int bluePin = 11;
+
+int buttonPin = 4;
+int debounceDelay = 200;
+unsigned long buttonLastPressed = 0;
+int selectedColor = 9; // 9 for red, 10 for green, 11 for blue
+
+int potPin = 5;
+
+void setup(){
+  //Serial.begin(9600);
+  pinMode(redPin, OUTPUT);
+  pinMode(greenPin, OUTPUT);
+  pinMode(bluePin, OUTPUT);
+  
+  pinMode(buttonPin, INPUT);
+  
+  analogWrite(redPin, 0);
+  analogWrite(greenPin, 0);
+  analogWrite(bluePin, 0);
+}
+```]
+
+---
+
+.left[```c
+void loop(){
+  if(digitalRead(buttonPin) == HIGH && millis() - buttonLastPressed > debounceDelay){
+    selectedColor += 1;
+    
+    if(selectedColor > 11){
+      selectedColor = 9;
+    }
+    
+    buttonLastPressed = millis();
+  }
+  
+  int rawPotInput = analogRead(potPin);
+  int output = map(rawPotInput, 0, 1023, 0, 255);
+  //Serial.println(output);
+  analogWrite(selectedColor, output);
+}
+```]
+
+---
+
+# The Map Function

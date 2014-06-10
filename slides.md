@@ -128,4 +128,165 @@ _(assume a 2 V drop across the LED)_
 
 --
 
-R = 7 V / 0.02 A = 350 Ω
+R = 7 V / 0.02 A
+
+--
+
+R = 350 Ω
+
+---
+
+# An LED Blinker
+
+.left[```c
+int led = 13;
+
+void setup() {
+  pinMode(led, OUTPUT);
+
+void loop() {
+  digitalWrite(led, HIGH);
+  delay(1000);
+  digitalWrite(led, LOW);
+  delay(1000);
+}
+```]
+
+![blink](images/blink.jpg)
+
+---
+
+background-image: url(http://arduino.cc/en/uploads/Tutorial/ExampleCircuit_sch.png)
+
+---
+
+# Why 220 Ω ?
+## V = I * R
+## 5 V - 2 V = I * 220 Ω
+## I = 3 V /220 Ω
+## I = 14 mA
+
+---
+
+# More Colors!
+
+![rbg_led](http://courses.cs.purdue.edu/_media/cs25000:rgb_led_diagram.jpg?w=500&tok=a083cc)
+
+---
+
+.left[```c
+int redPin = 7;
+int greenPin = 6;
+int bluePin = 5;
+
+void setup(){
+  pinMode(redPin, OUTPUT);
+  pinMode(greenPin, OUTPUT);
+  pinMode(bluePin, OUTPUT);
+  
+  digitalWrite(redPin, LOW);
+  digitalWrite(greenPin, LOW);
+  digitalWrite(bluePin, LOW);
+}
+
+void loop(){
+  digitalWrite(redPin, HIGH);
+  delay(1000);
+  digitalWrite(redPin, LOW);
+  
+  digitalWrite(greenPin, HIGH);
+  delay(1000);
+  digitalWrite(greenPin, LOW);
+  
+  digitalWrite(bluePin, HIGH);
+  delay(1000);
+  digitalWrite(bluePin, LOW);
+}
+```]
+
+---
+
+background-image: url(images/rgb_blinker_1.png)
+
+---
+
+# Selecting a Color
+![Button](http://www.varesano.net/files/imagecache/500width/pushbutton_legs_final.jpg)
+
+---
+
+![Button_Schematic](http://code.mios.com/trac/mios_arduino-sensor/raw-attachment/wiki/RelayActuatorWithButton/digital_button.jpg)
+
+---
+
+# Pull-Down Resistors
+.left[
+* Holds the logic signal near 0 V when no other active device is connected
+* When not pressed, no connection:
+```c
+digitalRead(buttonPin); // LOW
+```
+* When pressed, 5 V:
+```c
+digitalRead(buttonPin); // HIGH
+```
+]
+
+---
+
+background-image: url(http://ba.protostack.com/2010/03/switch_debounce_04_lrg.jpg)
+
+---
+
+# Debouncing
+* Can be done in hardware or software
+* In software, detect the first input and ignore additional input for x ms
+
+![hardware_debounce](http://3.bp.blogspot.com/-wAYF14jJWx0/T2Fq_yhoBnI/AAAAAAAABDk/UmTVve9tS70/s1600/cap+button.PNG)
+
+---
+
+background-image: url(images/rgb_blinker_2.png)
+
+---
+
+.left[```c
+int redPin = 9;
+int greenPin = 10;
+int bluePin = 11;
+
+int buttonPin = 4;
+int debounceDelay = 200;
+
+unsigned long buttonLastPressed = 0;
+int selectedColor = 9; // 9 for red, 10 for green, 11 for blue
+
+void setup(){
+  pinMode(redPin, OUTPUT);
+  pinMode(greenPin, OUTPUT);
+  pinMode(bluePin, OUTPUT);
+  
+  pinMode(buttonPin, INPUT);
+  
+  digitalWrite(redPin, LOW);
+  digitalWrite(greenPin, LOW);
+  digitalWrite(bluePin, LOW);
+}
+
+void loop(){
+  if(digitalRead(buttonPin) == HIGH && millis() - buttonLastPressed > debounceDelay){
+    selectedColor += 1;
+    
+    if(selectedColor > 11){
+      selectedColor = 9;
+    }
+    buttonLastPressed = millis();
+  }
+  
+  digitalWrite(redPin, LOW);
+  digitalWrite(greenPin, LOW);
+  digitalWrite(bluePin, LOW);
+  
+  digitalWrite(selectedColor, HIGH);
+}
+```]

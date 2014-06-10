@@ -104,3 +104,28 @@ background-image: url(https://dlnmh9ip6v2uc.cloudfront.net/r/600-600/assets/6/8/
 ## V = I * R
 
 ![ohms_law](images/ohms_law.jpg)
+
+---
+
+# Lets Avoid This
+
+<iframe width="420" height="315" src="//www.youtube.com/embed/WLctUO1DGtw" frameborder="0" allowfullscreen></iframe>
+
+---
+
+# What Kind of Resistor Should We Use?
+![example](https://dlnmh9ip6v2uc.cloudfront.net/assets/a/e/6/4/3/5113d8dace395f297d000000.png)
+
+--
+
+V = I * R
+
+--
+
+9 V - 2 V = 0.02 A * R
+
+_(assume a 2 V drop across the LED)_
+
+--
+
+R = 7 V / 0.02 A = 350 Ω

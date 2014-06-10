@@ -272,7 +272,11 @@ void setup(){
   digitalWrite(greenPin, LOW);
   digitalWrite(bluePin, LOW);
 }
+```]
 
+---
+
+.left[```c
 void loop(){
   if(digitalRead(buttonPin) == HIGH && millis() - buttonLastPressed > debounceDelay){
     selectedColor += 1;

@@ -303,7 +303,7 @@ void loop(){
 ---
 
 # We Need Analog IO
-![digital_vs_analog](http://www.romancenstyle.com/wp-content/uploads/2012/11/digita.jpg)
+![digital_vs_analog](http://www.privateline.com/manual/fig3_1.gif)
 
 ---
 # Analog Output

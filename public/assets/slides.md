@@ -53,11 +53,11 @@ background-image: url(http://arduino.cc/en/uploads/Main/ArduinoSeverinoSchematic
 
 ---
 
-background-image: url(images/avr_block_diagram.png)
+background-image: url(assets/avr_block_diagram.png)
 
 ---
 
-background-image: url(images/avr_assembly.png)
+background-image: url(assets/avr_assembly.png)
 
 ---
 
@@ -77,7 +77,7 @@ void loop() {
 }
 ```]
 
-![blink](images/blink.jpg)
+![blink](assets/blink.jpg)
 
 ---
 
@@ -103,7 +103,7 @@ background-image: url(https://dlnmh9ip6v2uc.cloudfront.net/r/600-600/assets/6/8/
 # Voltage, Current, Resistance, and Ohm's Law
 ## V = I * R
 
-![ohms_law](images/ohms_law.jpg)
+![ohms_law](assets/ohms_law.jpg)
 
 ---
 
@@ -153,7 +153,7 @@ void loop() {
 }
 ```]
 
-![blink](images/blink.jpg)
+![blink](assets/blink.jpg)
 
 ---
 
@@ -207,7 +207,7 @@ void loop(){
 
 ---
 
-background-image: url(images/rgb_blinker_1.png)
+background-image: url(assets/rgb_blinker_1.png)
 
 ---
 
@@ -247,7 +247,7 @@ background-image: url(http://ba.protostack.com/2010/03/switch_debounce_04_lrg.jp
 
 ---
 
-background-image: url(images/rgb_blinker_2.png)
+background-image: url(assets/rgb_blinker_2.png)
 
 ---
 
@@ -330,7 +330,7 @@ analogWrite(pin, value); // 0 for off, 255 for fully on, and anywhere in between
 
 ---
 
-background-image: url(images/rgb_blinker_3.png)
+background-image: url(assets/rgb_blinker_3.png)
 
 ---
 
